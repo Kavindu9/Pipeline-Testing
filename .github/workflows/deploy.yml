@@ -17,8 +17,8 @@ jobs:
       - name: Set up PHP
         uses: SamKirkland/web-deploy@1
         with:
-          target-server: ${{ secrets.SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          server-dir: /wp-content/themes/pipeline_test/
+          target-server: 43.229.84.197
+          username: testftp
+          password: h!8jr678K
+          destination-path: /home/testftp/epic-benz.43-229-84-197.plesk.page/httpdocs/wp-content/themes/pipeline_test/
           local-dir: ./
