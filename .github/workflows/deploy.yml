@@ -3,7 +3,7 @@ name: Deploy WordPress Theme
 on:
   push:
     branches:
-      - main
+      - main   # or your deployment branch
 
 jobs:
   deploy:
@@ -13,15 +13,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy theme Via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build production assets
+        run: npm run prod   # as per underscoretw docs
+
+      - name: Install rsync
+        run: sudo apt-get install -y rsync
+
+      - name: Deploy via SFTP
+        uses: panosoft/sftp-deploy-action@main
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /httpdocs/wp-content/themes/pipeline_test/
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.github*
-            node_modules/**
+          local_dir: "theme/"
+          remote_dir: "/wp-content/themes/your-theme-name/"
