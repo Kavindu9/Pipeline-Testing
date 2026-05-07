@@ -6,19 +6,22 @@ on:
       - main
 
 jobs:
-  web-deploy:
-    name: Deploy Website
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up PHP
-        uses: SamKirkland/web-deploy@1
+      - name: Deploy theme Via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          target-server: 43.229.84.197
+          server: 43.229.84.197
           username: testftp
           password: h!8jr678K
-          destination-path: /home/testftp/epic-benz.43-229-84-197.plesk.page/httpdocs/wp-content/themes/pipeline_test/
+          server-dir: /httpdocs/wp-content/themes/pipeline_test/
           local-dir: ./
+          exclude: |
+            **/.git*
+            **/.github*
+            node_modules/**
