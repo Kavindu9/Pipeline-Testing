@@ -31,9 +31,6 @@
 
 <?php wp_body_open(); ?>
 
-	<h1 class="text-3xl font-bold underline text-clifford">
-      Hello world! Testing WEBSITE....
-    </h1>
 
 <div id="page">
 	<a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'pipeline_test' ); ?></a>
