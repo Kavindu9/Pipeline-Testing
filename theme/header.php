@@ -19,13 +19,19 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	<?php wp_head(); ?>
+
+	<style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+      }
+    </style>
 </head>
 
 <body <?php body_class(); ?>>
 
 <?php wp_body_open(); ?>
 
-	<h1 class="text-3xl font-bold underline">
+	<h1 class="text-3xl font-bold underline text-clifford">
       Hello world! Testing WEBSITE....
     </h1>
 
