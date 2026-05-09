@@ -34,4 +34,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "theme/"
-          remote_dir: "/wp-content/themes/your-theme-name/"
+          remote_dir: "/wp-content/themes/pipeline_test/"
