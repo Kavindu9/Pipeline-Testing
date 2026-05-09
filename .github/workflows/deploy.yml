@@ -27,8 +27,8 @@ jobs:
       - name: Copy files via SSH
         uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME  }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
           target: "/var/www/vhosts/epic-benz.43-229-84-197.plesk.page/httpdocs/wp-content/themes/pipeline_test/"
