@@ -24,15 +24,12 @@ jobs:
       - name: Build theme assets
         run: npm run bundle
 
-      - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: 43.229.84.197
-          username: testftp
-          password: h!8jr678K
-          server-dir: "/wp-content/themes/pipeline_test/"
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.github*
-            node_modules/**
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./"
+          target: "/var/www/vhosts/yourdomain.com/httpdocs/wp-content/themes/pipeline_test/"
+          strip_components: 0
