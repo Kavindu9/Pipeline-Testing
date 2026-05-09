@@ -28,10 +28,14 @@ jobs:
         run: npm run build
 
       - name: Deploy via SFTP
-        uses: panosoft/sftp-deploy-action@main
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "theme/"
-          remote_dir: "/wp-content/themes/pipeline_test/"
+          server-dir: "/wp-content/themes/pipeline_test/"
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.github*
+            node_modules/**
