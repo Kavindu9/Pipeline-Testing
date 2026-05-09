@@ -27,9 +27,9 @@ jobs:
       - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: 43.229.84.197
+          username: testftp
+          password: h!8jr678K
           server-dir: "/wp-content/themes/pipeline_test/"
           local-dir: ./
           exclude: |
