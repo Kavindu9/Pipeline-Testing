@@ -30,7 +30,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /httpdocs/wp-content/themes/your-theme/
+          server-dir: /httpdocs/wp-content/themes/pipeline_test/
           local-dir: ./
           exclude: |
             **/.git*
