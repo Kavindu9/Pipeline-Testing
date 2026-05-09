@@ -31,5 +31,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
-          target: "/var/www/vhosts/yourdomain.com/httpdocs/wp-content/themes/pipeline_test/"
+          target: "/var/www/vhosts/epic-benz.43-229-84-197.plesk.page/httpdocs/wp-content/themes/pipeline_test/"
           strip_components: 0
