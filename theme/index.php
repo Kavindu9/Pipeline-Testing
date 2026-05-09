@@ -18,10 +18,7 @@ get_header();
 	<section id="primary">
 		<main id="main">
 
-		
-	<h1 class="text-3xl font-bold underline text-clifford">
-      Hello world! Testing WEBSITE....
-    </h1>
+
 
 		<?php
 		if ( have_posts() ) {
