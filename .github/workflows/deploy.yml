@@ -19,13 +19,13 @@ jobs:
           node-version: "lts/*"
 
       - name: Install npm dependencies
-        run: npm install
+        run: npm install && npm run dev 
 
       - name: Build production assets
         run: npm run prod   # as per underscoretw docs
 
-      - name: Install rsync
-        run: sudo apt-get install -y rsync
+      - name: Deployment
+        run: npm run build
 
       - name: Deploy via SFTP
         uses: panosoft/sftp-deploy-action@main
