@@ -15,6 +15,7 @@
         <h1 class="text-3xl font-bold underline text-clifford">
         Hello world! Testing WEBSITE....
         </h1>
+        <p class="text-2xl text-amber-300 font-bold">This is Git workflow testing...</p>
     </div>
 	
 </section>
