@@ -3,7 +3,8 @@ name: Deploy WordPress Theme
 on:
   push:
     branches:
-      - master   # or your deployment branch
+      - develop  #staging
+      - master   # Production(live site)
 
 jobs:
   deploy:
@@ -24,8 +25,26 @@ jobs:
       - name: Build theme assets
         run: npm run bundle
 
-      - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # - name: Deploy via SFTP
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/develop'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5 
+        with:
+          server: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USERNAME }}
+          password: ${{ secrets.STAGING_PASSWORD }}
+          server-dir: /httpdocs/wp-content/themes/pipeline_test/
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.github*
+            node_modules/**
+
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/master'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5 
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
